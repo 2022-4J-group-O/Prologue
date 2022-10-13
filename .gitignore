@@ -1,0 +1,7 @@
+/game/saves
+/game/tl
+/game/cache
+/log.txt
+/.vscode
+/game/.DS_Store
+*.rpyc
