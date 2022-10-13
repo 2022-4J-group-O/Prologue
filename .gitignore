@@ -5,3 +5,5 @@
 /.vscode
 /game/.DS_Store
 *.rpyc
+/errors.txt
+/traceback.txt
