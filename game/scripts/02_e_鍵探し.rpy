@@ -9,6 +9,4 @@ label e02:
 
     # TODO: 鍵を探す
 
-    jump d03
-
     return
