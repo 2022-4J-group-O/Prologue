@@ -1,7 +1,7 @@
 """
 探索パート: 牢獄の鍵を探す
 """
-label e01:
+label e02:
     scene bg rougoku
     with fade
 
