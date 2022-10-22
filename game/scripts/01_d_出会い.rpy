@@ -82,4 +82,4 @@ label d01:
 
     hide girl
 
-    jump e01 
+    jump e02 
