@@ -5,7 +5,7 @@ init python :
     def dot(amount, cps=preferences.slow_cps):
         return f"{{cps={cps}}}" + "." * amount + "{/cps}"
     
-    def set_cps(s, cps):
+    def cps_str(s, cps):
         return f"{{cps={cps}}}" + str(s) + "{/cps}"
     
     def slow(s):
