@@ -2,7 +2,7 @@ init python :
     def cps(sp):
         preferences.text_cps = sp
     
-    def dot(amount, cps=10):
+    def dot(amount, cps=preferences.slow_cps):
         return f"{{cps={cps}}}" + "." * amount + "{/cps}"
     
     def set_cps(s, cps):
