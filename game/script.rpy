@@ -7,6 +7,9 @@
 """
 define g = Character('girl', color="#c8ffc8")
 
+label main_menu:
+    return
+
 label start:
 
     jump d01
