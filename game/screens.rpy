@@ -81,6 +81,67 @@ style frame:
 ## ゲーム内のスクリーン
 ################################################################################
 
+init python:
+    def droptest(a, b):
+        preferences.flag = a[0].drag_name
+        #preferences.flag2 = b.drag_name
+        
+        return None
+        
+#Book
+screen book:
+        imagebutton:
+            xanchor 0
+            yanchor 0
+            xpos 0.2
+            ypos 0
+            idle "book_idle.png"
+            hover "book_hover.png"
+            action Jump("key")
+        imagebutton:
+            xanchor 0
+            yanchor 0
+            xpos 0.2
+            ypos 0.8
+            yoffset 15
+            idle "door_idle.png"
+            hover "door_hover.png"
+            action Jump("end")
+#key
+screen key:
+    draggroup:
+        drag:
+            drag_name "Key"
+            xpos 0
+            ypos 0
+            idle_child "key_idle.png"
+            hover_child "key_hover.png"
+            draggable True
+            droppable True
+            dragged droptest
+                
+        drag:
+            xanchor 0
+            yanchor 0
+            xpos 0.2
+            ypos 0
+            idle_child "book_idle.png"
+            hover_child "book_hover.png"
+            droppable True
+            draggable False
+        imagebutton:
+            xanchor 0
+            yanchor 0
+            xpos 0.2
+            ypos 0.8
+            yoffset 15
+            idle "door_idle.png"
+            hover "door_hover.png"
+            action Jump("end")
+        
+
+            
+
 
 ## Say（発話）スクリーン ################################################################
 ##

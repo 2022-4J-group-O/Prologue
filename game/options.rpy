@@ -213,3 +213,5 @@ init python:
 ## ッシュで分けてください。
 
 # define build.itch_project = "renpytom/test-project"
+default preferences.flag = ""
+default preferences.flag2 = ""
