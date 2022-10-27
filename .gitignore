@@ -3,7 +3,7 @@
 /game/cache
 /log.txt
 /.vscode
-/game/.DS_Store
+*.DS_Store
 *.rpyc
 /errors.txt
 /traceback.txt

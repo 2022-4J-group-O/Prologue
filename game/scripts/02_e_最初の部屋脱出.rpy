@@ -1,14 +1,19 @@
 """
 探索パート: 牢獄の鍵を探す
 """
+image background = "Background Room.png"
 label e02:
-    scene bg simple room 
+    scene background
     with fade
 
+
     "ここから鍵を探す探索パート"
-
     # TODO: 鍵を探す
+    call screen book
+label key:
+    call screen key
+    call screen opened
 
-    jump d03
-
+label end:
+    "you're in \"label end\""
     return
