@@ -125,7 +125,7 @@ define config.window_hide_transition = Dissolve(.2)
 
 default preferences.text_cps = 0
 
-
+default preferences.slow_cps = 5
 ## デフォルトのオート待ち時間。0 から 30 までの数字を取り、数字が大きいほど待ち
 ## 時間が長くなります。
 
