@@ -8,19 +8,11 @@ label e01:
 
 
     "ここから鍵を探す探索パート"
-    jump book
     # TODO: 鍵を探す
-label book:
-    call screen key(g)
-
+    call screen book
 label key:
     call screen key
-    
-
-    
-
-
-
+    call screen opened
 
 label end:
     "you're in \"label end\""

@@ -82,62 +82,77 @@ style frame:
 ################################################################################
 
 init python:
-    def droptest(a, b):
-        preferences.flag = a[0].drag_name
-        #preferences.flag2 = b.drag_name
+    # _x: ドロップ先Dragオブジェクト
+    # _y: ドロップ元のDragオブジェクトのリスト
+    def key_interacted(_x, _y):
+        return True
         
-        return None
-        
-#Book
+# Book
 screen book:
-        imagebutton:
-            xanchor 0
-            yanchor 0
-            xpos 0.2
-            ypos 0
-            idle "book_idle.png"
-            hover "book_hover.png"
-            action Jump("key")
-        imagebutton:
-            xanchor 0
-            yanchor 0
-            xpos 0.2
-            ypos 0.8
-            yoffset 15
-            idle "door_idle.png"
-            hover "door_hover.png"
-            action Jump("end")
+    imagebutton:
+        xanchor 0
+        yanchor 0
+        xpos 0.2
+        ypos 0
+        idle "book_idle.png"
+        hover "book_hover.png"
+        action Jump("key")
+    imagebutton:
+        xanchor 0
+        yanchor 0
+        xpos 0.2
+        ypos 0.8
+        yoffset 15
+        idle "door_idle.png"
+        hover "door_hover.png"
+        # action Jump("end")
+
 #key
 screen key:
     draggroup:
         drag:
             drag_name "Key"
-            xpos 0
-            ypos 0
             idle_child "key_idle.png"
             hover_child "key_hover.png"
+            xpos 0
+            ypos 0
             draggable True
-            droppable True
-            dragged droptest
+            droppable False
                 
         drag:
-            xanchor 0
-            yanchor 0
-            xpos 0.2
-            ypos 0
+            drag_name "Book"
             idle_child "book_idle.png"
             hover_child "book_hover.png"
-            droppable True
+            xpos 0.2
+            ypos 0
             draggable False
-        imagebutton:
-            xanchor 0
-            yanchor 0
+            droppable False
+
+        drag:
+            drag_name "Door"
+            idle_child "door_idle.png"
+            hover_child "door_hover.png"
             xpos 0.2
             ypos 0.8
             yoffset 15
-            idle "door_idle.png"
-            hover "door_hover.png"
-            action Jump("end")
+            draggable False
+            droppable True
+            dropped key_interacted
+
+screen opened:
+    imagebutton:
+        xpos 0.2
+        ypos 0
+        idle "book_idle.png"
+        hover "book_hover.png"
+
+    imagebutton:
+        idle "door_idle.png"
+        hover "door_hover.png"
+        xpos 0.2
+        ypos 0.8
+        yoffset 15
+        action Jump("end")
         
 
             
