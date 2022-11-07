@@ -5,7 +5,7 @@
 label d03:
     # ドアを開けると真っ黒だった
 
-    scene bg simple room
+    scene bg room
 
     show girl surprise
     

@@ -3,13 +3,13 @@ screen front(bglist, i):
         background bglist[i]
         imagebutton:
             ypos 0.5
-            idle "WhiteSquare.png"
-            hover "colorful.png"
+            idle "./sample/WhiteSquare.png"
+            hover "./samplecolorful.png"
             action Show("front", bglist=bglist, i=(i + 1) % 4)
         imagebutton:
             pos (1.0, 0.5)
-            idle "WhiteSquare.png"
-            hover "colorful.png"
+            idle "./sample/WhiteSquare.png"
+            hover "./sample/colorful.png"
             action Show("front", bglist=bglist, i=(i - 1) % 4)
         drag:
             draggable True

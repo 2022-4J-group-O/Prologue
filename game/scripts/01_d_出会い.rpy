@@ -3,7 +3,7 @@
 """
 label d01:
     # TODO: 右側から少女が入ってくる演出を入れたい
-    scene bg simple room 
+    scene bg room 
     with fade
 
     show girl
