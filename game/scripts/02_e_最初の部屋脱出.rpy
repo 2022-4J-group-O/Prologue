@@ -16,7 +16,7 @@ label e02:
 # クリックによるイベントを起こす度にこのラベルへジャンプする
 label e02_pause:
 
-    $ renpy.pause(hard=True)
+    $ renpy.pause()
 
     # 以下はdroppedでTrueが返されたときに実行される
     # drag and dropのイベントでTrueが返されるとscreenが強制終了する

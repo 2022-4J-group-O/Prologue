@@ -1,4 +1,6 @@
 init python:
+    store.droppable = ""
+    store.draggable = ""
     # このスクリーンで使用するフラグ
     flg_key_visible = False  # 鍵が表示されるか
     flg_door_opened = False  # ドアが開錠されたか
@@ -35,7 +37,7 @@ screen e02:
             ypos 0
             draggable False
             droppable False
-            clicked Jump("e02_book_clicked")
+            clicked Call("e02_book_clicked")
 
         # ドア(閉)の表示
         if not flg_door_opened:
