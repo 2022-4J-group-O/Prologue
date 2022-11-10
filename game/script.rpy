@@ -14,3 +14,8 @@ label start:
     jump d01
     
     return
+
+#ロールバックの無効化
+init:
+    $ config.keymap["rollback"] = []
+    

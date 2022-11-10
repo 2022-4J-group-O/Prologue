@@ -7,11 +7,14 @@ label e02:
 
     $ move_room('simple room')
 
+
     show screen e02(read_room())
 
     show girl at right
 
     g "まずはこの部屋から脱出しよう"
+    
+    window hide #前の場面の台詞ウィンドウをとじる
 
     hide girl
 
@@ -26,6 +29,8 @@ label e02_pause:
     # drag and dropのイベントでTrueが返されるとscreenが強制終了する
     # droppedでdropされたDragの名前がKeyなら、鍵を消してドアを開く
     show screen e02(read_room())
+
+    hide window
 
     if store.draggable == "Key" and (not flg_door_opened):
 
