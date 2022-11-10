@@ -328,13 +328,13 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
-            textbutton _("ロールバック") action Rollback()
+            #textbutton _("ロールバック") action Rollback()
             textbutton _("ヒストリー") action ShowMenu('history')
             textbutton _("スキップ") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("オート") action Preference("auto-forward", "toggle")
-            textbutton _("セーブ") action ShowMenu('save')
-            textbutton _("Q.セーブ") action QuickSave()
-            textbutton _("Q.ロード") action QuickLoad()
+            #textbutton _("セーブ") action ShowMenu('save')
+            #textbutton _("Q.セーブ") action QuickSave()
+            #textbutton _("Q.ロード") action QuickLoad()
             textbutton _("設定") action ShowMenu('preferences')
 
 
@@ -382,9 +382,9 @@ screen navigation():
 
             textbutton _("ヒストリー") action ShowMenu("history")
 
-            textbutton _("セーブ") action ShowMenu("save")
+            #textbutton _("セーブ") action ShowMenu("save")
 
-        textbutton _("ロード") action ShowMenu("load")
+        #textbutton _("ロード") action ShowMenu("load")
 
         textbutton _("環境設定") action ShowMenu("preferences")
 
@@ -392,9 +392,9 @@ screen navigation():
 
             textbutton _("リプレイ終了") action EndReplay(confirm=True)
 
-        elif not main_menu:
+        #elif not main_menu:
 
-            textbutton _("メインメニュー") action MainMenu()
+            #textbutton _("メインメニュー") action MainMenu()
 
         textbutton _("バージョン情報") action ShowMenu("about")
 
@@ -667,7 +667,7 @@ screen save():
 
     tag menu
 
-    use file_slots(_("セーブ"))
+    use file_slots(_("ナビゲーション")) #セーブを無理やり修正
 
 
 screen load():
