@@ -1,9 +1,13 @@
 """
 探索パート: 牢獄の鍵を探す
 """
+
 label e02:
     scene bg room with fade
-    show screen e02
+
+    $ move_room('simple room')
+
+    show screen e02(read_room())
 
     show girl at right
 
@@ -21,11 +25,10 @@ label e02_pause:
     # 以下はdroppedでTrueが返されたときに実行される
     # drag and dropのイベントでTrueが返されるとscreenが強制終了する
     # droppedでdropされたDragの名前がKeyなら、鍵を消してドアを開く
-    show screen e02
+    show screen e02(read_room())
 
-    if store.draggable == "Key":
+    if store.draggable == "Key" and (not flg_door_opened):
 
-        $ flg_key_visible = False
         $ flg_door_opened = True
 
         show girl at right
@@ -48,7 +51,7 @@ label e02_key_clicked:
 
     hide girl
 
-    jump e02_pause
+    return
 
 
 # 本をクリックしたとき
@@ -56,11 +59,12 @@ label e02_book_clicked:
 
     show girl at right
 
-    if (not flg_key_visible) and (not flg_door_opened):
+    if not e02_flag_book:
 
         g "この本、違和感があるね"
 
-        $ flg_key_visible = True # 鍵を表示
+        $ e02_flag_book = True # 既読フラグ
+        $ make_obj('Key') # 鍵オブジェクトを生成
 
         show girl surprise at right
 
@@ -76,7 +80,7 @@ label e02_book_clicked:
 
     hide girl
 
-    jump e02_pause
+    return
 
 
 # ドアをクリックしたとき
@@ -96,4 +100,4 @@ label e02_door_opened_clicked:
 
     hide screen e02
 
-    jump d03  # d03へ
+    return  # d03へ

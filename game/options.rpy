@@ -213,3 +213,20 @@ init python:
 ## ッシュで分けてください。
 
 # define build.itch_project = "renpytom/test-project"
+
+
+## ここから追加プロパティー #########################################################10
+
+## defineで定義したフィールドはreadonly
+
+# プレーヤーが主に操作をするディレクトリー
+define user_directory = "game_data"
+
+# 読み込むファイルのlist
+define objects = ['red', 'blue', 'green', 'Book', 'Door', 'Key']
+
+# 現在いるroom
+default current_room = 'default'
+
+# 内部変数
+default say_interact = False
