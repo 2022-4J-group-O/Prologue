@@ -146,7 +146,8 @@ default preferences.afm_time = 15
 ## この値は一般的に変更するべきではありません。もし変更する場合、式や変数ではな
 ## く文字列で直接指定しなければなりません。
 
-define config.save_directory = "Prologue-1665662419"
+## ゲームフォルダ外部にセーブデータを作らない
+# define config.save_directory = "Prologue-1665662419"
 
 
 ## アイコン ########################################################################
@@ -215,9 +216,9 @@ init python:
 # define build.itch_project = "renpytom/test-project"
 
 
-## ここから追加プロパティー #########################################################10
+## ここから追加プロパティー #########################################################
 
-## defineで定義したフィールドはreadonly
+## readonly property        ################################################
 
 # プレーヤーが主に操作をするディレクトリー
 define user_directory = "game_data"
@@ -225,8 +226,15 @@ define user_directory = "game_data"
 # 読み込むファイルのlist
 define objects = ['red', 'blue', 'green', 'Book', 'Door', 'Key']
 
+# ロールバックの無効化
+define config.rollback_enabled = False
+
+## デバッグ用               ########################################
+
+## mutable property         ################################################
+
 # 現在いるroom
 default current_room = 'default'
 
-# 内部変数
+# 会話中フラグ
 default say_interact = False

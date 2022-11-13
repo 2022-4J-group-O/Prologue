@@ -8,6 +8,10 @@
 define g = Character('girl', color="#c8ffc8")
 
 label main_menu:
+    python:
+        fn = renpy.newest_slot()
+        if fn != None:
+            renpy.load(fn)
     return
 
 label start:
