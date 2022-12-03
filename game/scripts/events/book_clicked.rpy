@@ -2,7 +2,7 @@
 本をクリックしたときのイベント
 """
 
-label pr_book_clicked:
+label pr_ev_book_clicked:
 
     show girl at right
 
