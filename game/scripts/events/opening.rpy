@@ -113,7 +113,7 @@ label .yes:
 
     hide girl
 
-    jump pr_start  # イベント終了
+    return  # イベント終了
 
 
 # 遊びに付き合うことを断った場合
