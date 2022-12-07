@@ -4,9 +4,9 @@
 
 # 各種変数の初期化
 # イベントフラグ
-define pr_evflg_opening = True  # 初回起動時のイベントフラグ
+default pr_evflg_opening = True  # 初回起動時のイベントフラグ
 # 状態フラグ
-define pr_main_activated = False  # Mainのプログラムが起動されたときTrueになる(未実装)
+default pr_main_activated = False  # Mainのプログラムが起動されたときTrueになる(未実装)
 
 label pr_start:
     $ move_room('simple room')  # 部屋移動
