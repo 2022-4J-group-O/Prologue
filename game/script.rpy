@@ -15,7 +15,7 @@ label main_menu:
     return
 
 label start:
-    jump d01
+    jump pr_start
     
     return
 

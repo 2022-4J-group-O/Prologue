@@ -1,11 +1,19 @@
 """
-会話パート: 最初に少女と出会うシーン
-"""
-label d01:
-    # TODO: 右側から少女が入ってくる演出を入れたい
-    scene bg room 
-    with fade
+prologue初回起動時にのみ発生させるイベント
+少女とプレイヤーが出会うシーン
 
+イベント終了後、pr_startラベルへ戻る
+
+# ラベル
+* pr_opening
+    * .pr_q
+    * .pr_yes
+    * .pr_no
+"""
+
+define jumped_pr_no = False  # pr_noラベルは訪問済みか
+
+label pr_ev_opening:
     show girl
     # cpsを変更
     $ cps(10)
@@ -13,9 +21,6 @@ label d01:
 
     $ cps(30)
     g "この場所が読み込まれるなんて、ずいぶん久しぶりだね"
-
-    # ......の部分をゆっくり
-    # $ g("君は" + slow("......") + "どうやら私の知り合いではないみたい")
 
     g "君は......どうやら私の知り合いではないみたい"
 
@@ -85,16 +90,17 @@ label d01:
     
     g "きっと、退屈させないからさ、どう？"
 
-    $ flg_d01_no = False  # 一回以上d01_noにジャンプしたか
 
-label d01_q:
+label .question:  # 遊びに付き合うか尋ねる
     menu:
         "遊びに付き合う":
-            jump d01_yes
+            jump .yes
         "断る":
-            jump d01_no
+            jump .no
 
-label d01_yes:
+
+# 遊びに付き合うと答えた場合
+label .yes:
     show girl
     
     g "ありがとう！"
@@ -107,12 +113,15 @@ label d01_yes:
 
     hide girl
 
-    jump e02 
+    return  # イベント終了
 
-label d01_no:
-    if not flg_d01_no:
-        $ flg_d01_no = True
-        
+
+# 遊びに付き合うことを断った場合
+label .no:
+    if not jumped_pr_no:  # 初訪問時
+
+        $ jumped_pr_no = True
+
         show girl
 
         "......"
@@ -133,7 +142,7 @@ label d01_no:
 
         g "ゲームに付き合ってくれるよね？"
     
-    else:
+    else:  # 訪問二回目以降
         show girl
 
         "......"
@@ -144,4 +153,4 @@ label d01_no:
 
         g "これ以上違うイベントは起こさないよ。安心して"
 
-    jump d01_q
+    jump .question  # もう一度質問する

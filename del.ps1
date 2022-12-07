@@ -1,0 +1,1 @@
+Get-ChildItem -Path . -Filter *.rpyc -Recurse | Remove-Item
