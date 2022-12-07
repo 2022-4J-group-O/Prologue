@@ -20,7 +20,7 @@ label .scloop:
 
     if pr_evflg_opening:  # 初回起動時 
         $ pr_evflg_opening = False  # 初回起動のイベントを無効化
-        call say_about(calllabel="pr_ev_opening", jumplabel="pr_start.scloop")
+        call say_about("pr_ev_opening", "pr_start.scloop")
 
     if pr_main_activated:  # Mainのプログラム起動時
         pass  # 何か書くかも？
@@ -28,7 +28,7 @@ label .scloop:
     # KeyがDoorにドロップされたときのイベント
     if store.draggable == "Key" and (not pr_door_opened):
         $ pr_door_opened = True
-        call say_about(calllabel="pr_ev_door_opened", jumplabel="pr_start.scloop")
+        call say_about("pr_ev_door_opened", "pr_start.scloop")
 
     $ renpy.pause()
 
