@@ -224,7 +224,7 @@ init python:
 define user_directory = "game_data"
 
 # 読み込むファイルのlist
-define objects = ['red', 'blue', 'green', 'Book', 'Door', 'Key']
+define objects = ['red', 'blue', 'green', 'Book', 'Door', 'Key','Clock','Cushion']
 
 # ロールバックの無効化
 define config.rollback_enabled = False

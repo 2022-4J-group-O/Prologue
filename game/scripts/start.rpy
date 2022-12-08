@@ -16,6 +16,7 @@ label pr_start:
 
 # スクリーンを表示する無限ループ
 label .scloop:
+    window hide
     show screen pr_screen(read_room())  # スクリーン表示
 
     if pr_evflg_opening:  # 初回起動時 
