@@ -30,7 +30,7 @@ screen pr_screen(current):
                     ypos 0
                     draggable True
                     droppable False
-                    clicked Call("say_about", calllabel="say_simple", jumplabel="pr_start.scloop", msg='古い鍵だね')
+                    clicked FromSc("say_simple", "pr_start.scloop", msg="古い鍵だね")
             # 本の表示
             elif item == 'Book':
                 drag:
@@ -40,8 +40,7 @@ screen pr_screen(current):
                     ypos 0
                     draggable False
                     droppable False
-                    clicked Call("say_about", calllabel="pr_ev_book_clicked", jumplabel="pr_start.scloop")
-
+                    clicked FromSc("pr_ev_book_clicked", "pr_start.scloop")
             elif item == 'Door':
                 # ドア(閉)の表示
                 if not pr_door_opened:
@@ -54,8 +53,7 @@ screen pr_screen(current):
                         draggable False
                         droppable True
                         dropped pr_dropped_to_door
-                        clicked Call("say_about", calllabel="say_simple", jumplabel="pr_start.scloop", msg='鍵がかかってるみたい')
-
+                        clicked FromSc("say_simple", "pr_start.scloop", msg="鍵がかかってるみたい")
                 # ドア(開)の表示
                 if pr_door_opened:
                     drag:
@@ -66,7 +64,7 @@ screen pr_screen(current):
                         yoffset 15
                         draggable False
                         droppable False
-                        clicked Call("say_about", calllabel="pr_ev_door_opened_clicked", jumplabel="pr_start.scloop")
+                        clicked FromSc("pr_ev_door_opened_clicked", "pr_start.scloop")
             else:
                 drag:
                     drag_name item
