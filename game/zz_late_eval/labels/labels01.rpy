@@ -13,11 +13,15 @@ label say_simple(msg, jumplabel=None):
 # インタラクション的なことをしながらラベルを呼ぶ(要検証)
 # callするラベルは必ずreturnされなければならない
 # screenからセリフを呼び出したいときは必ずこれを使う
-label say_about(calllabel, jumplabel=None, **kwargs):
+label say_about(calllabel_0, jumplabel_0=None, **kwargs):
     if not say_interact:
         $ say_interact = True
-        call expression calllabel pass (**kwargs) # must be returned
+        call expression calllabel_0 pass (**kwargs) # must be returned
         $ say_interact = False
-        if jumplabel != None:
-            jump expression jumplabel
+        if jumplabel_0 != None:
+            python:
+                jl = jumplabel_0
+                # calllabel,jumplabelなどの変数はドロップされる。
+                renpy.pop_call()
+            jump expression jl
     return
