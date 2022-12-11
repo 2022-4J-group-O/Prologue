@@ -1,0 +1,1 @@
+remove-item "game/saves/*"
