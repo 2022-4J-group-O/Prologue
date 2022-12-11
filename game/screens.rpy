@@ -310,7 +310,7 @@ screen navigation():
 
         #textbutton _("ロード") action ShowMenu("load")
 
-        textbutton _("環境設定") action ShowMenu("preferences")
+        textbutton _("環境設定") action ShowMenu("save")
 
         if _in_replay:
 
@@ -587,11 +587,12 @@ style about_label_text:
 ## https://ja.renpy.org/doc/html/screen_special.html#save https://ja.renpy.org/
 ## doc/html/screen_special.html#load
 
-screen save():
+## セーブできないようにした(要検証)
+# screen save():
 
-    tag menu
+#     tag menu
 
-    use file_slots(_("ナビゲーション")) #セーブを無理やり修正
+#     use file_slots(_("ナビゲーション")) #セーブを無理やり修正
 
 
 screen load():
@@ -717,7 +718,9 @@ style slot_button_text:
 ##
 ## https://ja.renpy.org/doc/html/screen_special.html#preferences
 
-screen preferences():
+## 右クリックしてメニューを呼び出すとsaveスクリーンが呼ばれる
+## バグが起こりそうなので要検証
+screen save():
 
     tag menu
 
