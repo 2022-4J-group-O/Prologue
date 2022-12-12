@@ -11,7 +11,8 @@ default pr_main_activated = False  # Mainのプログラムが起動されたと
 label pr_start:
     $ move_room('simple room')  # 部屋移動
     scene bg room
-    with fade
+    show screen pr_screen(read_room())
+    with Fade(0.0, 1.0, 2.0)
 
 
 # スクリーンを表示する無限ループ

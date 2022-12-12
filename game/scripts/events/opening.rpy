@@ -15,6 +15,8 @@ define jumped_pr_no = False  # pr_noラベルは訪問済みか
 
 label pr_ev_opening:
     show girl at right
+    with dissolve
+
     # cpsを変更
     $ cps(10)
     "......"

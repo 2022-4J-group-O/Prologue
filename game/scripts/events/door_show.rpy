@@ -1,3 +1,3 @@
-label door_show:
-    $ door_show = True
+label pr_show_door:
+    $ pr_door_showing = True
     return 
