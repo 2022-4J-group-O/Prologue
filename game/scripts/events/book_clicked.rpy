@@ -9,6 +9,8 @@ label pr_ev_book_clicked:
         g "この本、違和感があるね"
         
         $ pr_book_opened = True # 既読フラグ
+        $ delete_obj("Book")
+        $ make_obj("Book Opened")
         $ make_obj('Key') # 鍵オブジェクトを生成
 
         show girl surprise at right
