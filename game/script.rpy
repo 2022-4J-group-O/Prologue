@@ -13,9 +13,10 @@ label main_menu:
     python:
         update_user_dir()
         global_data.lazy()
-        fn = renpy.newest_slot()
-        if fn != None:
-            renpy.load(fn)
+        if auto_load:
+            fn = renpy.newest_slot()
+            if fn != None:
+                renpy.load(fn)
     return
 
 label start:
