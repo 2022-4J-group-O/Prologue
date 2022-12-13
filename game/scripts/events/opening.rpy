@@ -11,7 +11,7 @@ prologue初回起動時にのみ発生させるイベント
     * .pr_no
 """
 
-define jumped_pr_no = False  # pr_noラベルは訪問済みか
+default jumped_pr_no = False  # pr_noラベルは訪問済みか
 
 label pr_ev_opening:
     show girl at right

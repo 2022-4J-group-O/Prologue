@@ -223,6 +223,9 @@ init python:
 # プレーヤーが主に操作をするディレクトリー
 define user_directory = "game_data"
 
+# プレイヤー用のディレクトリの初期状態を保存しておくためのファイル
+define default_user_dirdata_path = "game/data/default"
+
 # 読み込むファイルのlist
 define objects = ['Book', "Book Opened", 'Door', 'Key', 'Clock', 'Cushion', "Door Opened"]
 
@@ -235,12 +238,16 @@ define default_obj_prop = {
     "Key": {"pos": (0.5, 0.8), "offset": (55, 50), "clicked": FromSc("say_simple", "pr_start.scloop", msg="古い鍵だね")},
     "Door Opened": {"pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 15, "draggable": True, "clicked": FromSc("pr_ev_door_opened_clicked", "pr_start.scloop")}
 }
+
 # ロールバックの無効化
 define config.rollback_enabled = False
 
 ## デバッグ用               ########################################
 
 define auto_load = False
+
+# プレイヤー用のディレクトリの初期状態を示すディレクトリ
+define default_user_dir = "default_game_data"
 
 ## mutable property         ################################################
 
