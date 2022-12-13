@@ -256,3 +256,10 @@ default current_room = 'default'
 
 # 会話中フラグ
 default say_interact = False
+
+# ここからビルド設定
+init python:
+    build.classify("**.ps1", None) # powershellスクリプトを除外
+    build.classify("readme.md", None) # github用のreadmeを除外
+    build.classify(default_user_dir + "/**", None) # default_game_data以下をすべて除外
+    build.classify("game/images/**", "archive") # 画像を暗号化
