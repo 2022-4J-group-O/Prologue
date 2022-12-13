@@ -4,16 +4,16 @@
 
 label pr_ev_book_clicked:
 
-    show girl at right
-
     if not pr_book_opened:
-
+        
         g "この本、違和感があるね"
-
+        
         $ pr_book_opened = True # 既読フラグ
         $ make_obj('Key') # 鍵オブジェクトを生成
 
         show girl surprise at right
+
+        show screen pr_screen(read_room()) # 鍵を表示させるためにスクリーン更新する
 
         g "わ、中に鍵がはいってた"
 
