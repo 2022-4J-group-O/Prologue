@@ -7,8 +7,12 @@
 """
 define g = Character('girl', color="#c8ffc8")
 
+default global_data = Const()
+
 label main_menu:
     python:
+        update_user_dir()
+        global_data.lazy()
         fn = renpy.newest_slot()
         if fn != None:
             renpy.load(fn)

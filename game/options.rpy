@@ -223,6 +223,9 @@ init python:
 # プレーヤーが主に操作をするディレクトリー
 define user_directory = "game_data"
 
+# プレイヤー用のディレクトリの初期状態を保存しておくためのファイル
+define default_user_dirdata_path = "game/data/default"
+
 # 読み込むファイルのlist
 define objects = ['red', 'blue', 'green', 'Book', 'Door', 'Key','Clock','Cushion']
 
@@ -230,6 +233,9 @@ define objects = ['red', 'blue', 'green', 'Book', 'Door', 'Key','Clock','Cushion
 define config.rollback_enabled = False
 
 ## デバッグ用               ########################################
+
+# プレイヤー用のディレクトリの初期状態を示すディレクトリ
+define default_user_dir = "default_game_data"
 
 ## mutable property         ################################################
 
