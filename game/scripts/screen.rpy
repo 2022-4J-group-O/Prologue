@@ -7,6 +7,7 @@ init python:
     pr_door_opened = False  # ドアが開錠されたか
     pr_book_opened = False # bookのメッセージ既読フラグ
     jumped_pr_door_opened_clicked = False  # pr_door_opened_clickedラベルを訪問済みか
+    door_show = False
     pr_reset_times = 0 # simple roomでリセットした回数
 
     # ドアにものがドロップされたときに呼び出される関数
@@ -27,31 +28,76 @@ screen pr_screen(current):
             if item == 'Key':
                 drag:
                     drag_name "Key"
-                    child "key_idle.png"
-                    xpos 0
-                    ypos 0
+                    child "key.png"
+                    xpos 0.5
+                    xoffset 55
+                    ypos 0.8
+                    yoffset 50
                     draggable True
                     droppable False
                     clicked FromSc("say_simple", "pr_start.scloop", msg="古い鍵だね")
-            # 本の表示
-            elif item == 'Book':
+            elif item == 'Clock':
                 drag:
-                    drag_name "Book"
-                    child "book_idle.png"
-                    xpos 0.2
+                    drag_name "Clock"
+                    child "clock.png"
+                    xpos 0.65
                     ypos 0
+                    yoffset 30
                     draggable False
                     droppable False
-                    clicked FromSc("pr_ev_book_clicked", "pr_start.scloop")
+            elif item == 'Cushion':
+                drag:
+                    drag_name "Cushion"
+                    child "cushion.png"
+                    xanchor 0.5
+                    xpos 0.7
+                    yanchor 0.5
+                    ypos 0.8
+                    yoffset 50
+                    draggable False
+                    droppable False
+            # 本の表示
+            elif item == 'Book':
+                if not pr_book_opened:
+                    drag:
+                        drag_name "Book"
+                        child "book.png"
+                        xpos 0.5
+                        ypos 0.8
+                        yoffset 60
+                        draggable False
+                        droppable False
+                        clicked FromSc("pr_ev_book_clicked", "pr_start.scloop")
+                if pr_book_opened:
+                    drag:
+                        drag_name "Book"
+                        child "book_opened.png"
+                        xpos 0.4
+                        ypos 0.7
+                        yoffset 10
+                        draggable False
+                        droppable False
+                        clicked FromSc("pr_ev_book_clicked", "pr_start.scloop")
             elif item == 'Door':
-                # ドア(閉)の表示
-                if not pr_door_opened:
+                if not door_show and not pr_door_opened:
                     drag:
                         drag_name "Door"
-                        child "door_idle.png"
-                        xpos 0.2
-                        ypos 0.8
-                        yoffset 15
+                        child "door_hidden.png"
+                        xpos 0.1
+                        yanchor 0.5
+                        ypos 0.5
+                        draggable False
+                        droppable False
+                        clicked FromSc("door_show", "pr_start.scloop")
+                # ドア(閉)の表示
+                if door_show and not pr_door_opened:
+                    drag:
+                        drag_name "Door"
+                        child "door.png"
+                        xpos 0.1
+                        yanchor 0.5
+                        ypos 0.5
+                        yoffset 30
                         draggable False
                         droppable True
                         dropped pr_dropped_to_door
@@ -60,9 +106,10 @@ screen pr_screen(current):
                 if pr_door_opened:
                     drag:
                         drag_name "Door Opened"
-                        child "door_opened.png"
-                        xpos 0.2
-                        ypos 0.8
+                        child "door_frame.png"
+                        xpos 0.1
+                        yanchor 0.5
+                        ypos 0.5
                         yoffset 15
                         draggable False
                         droppable False

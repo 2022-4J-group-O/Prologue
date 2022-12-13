@@ -227,7 +227,7 @@ define user_directory = "game_data"
 define default_user_dirdata_path = "game/data/default"
 
 # 読み込むファイルのlist
-define objects = ['red', 'blue', 'green', 'Book', 'Door', 'Key']
+define objects = ['red', 'blue', 'green', 'Book', 'Door', 'Key','Clock','Cushion']
 
 # ロールバックの無効化
 define config.rollback_enabled = False

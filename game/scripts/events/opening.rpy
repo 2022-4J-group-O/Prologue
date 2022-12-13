@@ -14,7 +14,7 @@ prologue初回起動時にのみ発生させるイベント
 default jumped_pr_no = False  # pr_noラベルは訪問済みか
 
 label pr_ev_opening:
-    show girl
+    show girl at right
     # cpsを変更
     $ cps(10)
     "......"
@@ -24,33 +24,33 @@ label pr_ev_opening:
 
     g "君は......どうやら私の知り合いではないみたい"
 
-    show girl smile
+    show girl smile at right
 
     g "君が誰なのかはよくわからないけど、人と話せてうれしい"
 
     "......"
 
-    show girl look away
+    show girl look away at right
 
     g "......ところでさ、どうして君がこのプログラムを起動したのか私にはわからないんだけど......"
 
-    show girl
+    show girl at right
     
     g "ゲームを遊びに来た......ってことでいいんだよね？"
 
     "......"
 
-    show girl smile
+    show girl smile at right
 
     g "なんにせよ、私との遊びに付き合ってほしいんだけど、どうかな？"
 
-    show girl look away
+    show girl look away at right
 
     g "とにかく暇なんだよ......私ここにずっと一人だからさ......"
 
     "......"
 
-    show girl
+    show girl at right
 
     g "このゲームは、脱出ゲームだよ"
 
@@ -62,13 +62,14 @@ label pr_ev_opening:
 
     g "きっと、こんな時間からこんなゲーム起動した君の、暇つぶしくらいにはなるよ"
 
-    show girl smile
+    show girl smile at right
 
     g "とにかく、私の暇を紛らわせてほしい"
 
     show girl
     
     g "きっと、きみを退屈させないって約束するからさ、どう？"
+
 
 
 label .question:  # 遊びに付き合うか尋ねる
@@ -81,7 +82,7 @@ label .question:  # 遊びに付き合うか尋ねる
 
 # 遊びに付き合うと答えた場合
 label .yes:
-    show girl
+    show girl at right
     
     g "ありがとう！"
 
@@ -123,14 +124,16 @@ label .no:
         g "ゲームに付き合ってくれるよね？"
     
     else:  # 訪問二回目以降
-        show girl
+        show girl at right
 
         "......"
 
-        show girl smile
+        show girl smile at right
 
         g "なかなか慎重派なプレイヤーさんだね"
 
         g "これ以上違うイベントは起こさないよ。安心して"
+
+        hide girl
 
     jump .question  # もう一度質問する
