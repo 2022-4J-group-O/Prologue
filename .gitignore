@@ -7,3 +7,4 @@
 *.rpyc
 /errors.txt
 /traceback.txt
+/game/images/protected

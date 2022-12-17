@@ -18,9 +18,8 @@ init python:
         store.droppable = drop.drag_name
         store.draggable = drags[0].drag_name
         return True
-        
+
 screen pr_screen(current):
-    $ objpos = {'red': (0.25, 0.3), 'blue': (0.6, 0.2), 'green': (0.3, 0.45)}
     layer "master"
     draggroup:
         for item in current:
