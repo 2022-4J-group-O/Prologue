@@ -236,7 +236,7 @@ define default_obj_prop = {
     "Cushion": {"anchor": (0.5, 0.5), "pos": (0.7, 0.8), "draggable": False},
     "Clock": {"pos": (0.65, 0.0), "yoffset": 30, "draggable": False, "clicked": FromSc("pr_ev_clock_clicked", "pr_start.scloop")},
     "Key": {"pos": (0.5, 0.8), "offset": (55, 50), "clicked": FromSc("say_simple", "pr_start.scloop", msg="古い鍵だね")},
-    "Door Opened": {"pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 15, "draggable": True, "clicked": FromSc("pr_ev_door_opened_clicked", "pr_start.scloop")}
+    "Door Opened": {"pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 15, "draggable": False, "clicked": FromSc("pr_ev_door_opened_clicked", "pr_start.scloop")}
 }
 
 # ロールバックの無効化
