@@ -41,7 +41,6 @@ init python :
     # 読み込み可能なオブジェクトはoption.rpyのobjects定数で指定する
     # roomを指定しない場合現在いるroomのオブジェクトを読み込む
     # オブジェクト名の前に.が付いたファイルも読み込む
-    # TODO! 偽ファイルの検出処理が必要(ファイルの中身にあるハッシュ値を読み取って判定)
     def read_room(roomdir=None):
         cwd = os.getcwd()
         l = read_room_raw(roomdir)
