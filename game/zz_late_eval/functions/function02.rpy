@@ -42,11 +42,15 @@ init python:
         return Directory(eval(by.decode("utf-8")))
     
     # 部屋をリセット(相対パスで)
+    # PE -> PermissionError
     def reset_room(room_path: str):
         cwd = os.getcwd()
         os.chdir(user_dir_path)
         if os.path.isdir(room_path):
-            shutil.rmtree(room_path)
+            try:
+                shutil.rmtree(room_path)
+            except PermissionError:
+                return "PE"
         # os.makedirs(room_path)
         for p in global_data.default_dir_data.dirlist[0]:
             tmp = os.path.commonpath([p, room_path])
@@ -59,3 +63,4 @@ init python:
                 with open(p, "wb") as f:
                     f.write(global_data.default_dir_data.dirlist[2][i])
         os.chdir(cwd)
+        return None
