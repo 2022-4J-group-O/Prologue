@@ -11,7 +11,7 @@ default global_data = Const()
 
 label main_menu:
     python:
-        update_user_dir()
+        # update_user_dir()
         global_data.lazy()
         if auto_load:
             fn = renpy.newest_slot()
