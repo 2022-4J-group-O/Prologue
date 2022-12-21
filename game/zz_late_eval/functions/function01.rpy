@@ -98,4 +98,4 @@ init python :
         current_room = roomdir
     
     def check_main():
-        return not os.path.isfile(os.path.join(user_dir_path, main_built_flg_path))
+        return not os.path.isfile(os.path.join(config.basedir, main_built_flg_path))
