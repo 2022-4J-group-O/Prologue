@@ -100,3 +100,6 @@ init python :
     def move_room(roomdir):
         global current_room
         current_room = roomdir
+    
+    def check_main():
+        return not os.path.isfile(os.path.join(config.basedir, main_built_flg_path))

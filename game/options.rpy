@@ -226,6 +226,9 @@ define user_directory = "game_data"
 # プレイヤー用のディレクトリの初期状態を保存しておくためのファイル
 define default_user_dirdata_path = "game/data/default"
 
+# mainを起動していないときに存在するファイル
+define main_built_flg_path = "game/data/main_nbuilt"
+
 # 読み込むファイルのlist
 define objects = ['Book', "Book Opened", 'Door', 'Key', 'Clock', 'Cushion', "Door Opened"]
 
