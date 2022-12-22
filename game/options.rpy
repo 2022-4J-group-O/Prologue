@@ -247,7 +247,8 @@ define config.rollback_enabled = False
 
 ## デバッグ用               ########################################
 
-define auto_load = False
+# ビルド時には必ずTrueにする
+define auto_load = True
 
 # プレイヤー用のディレクトリの初期状態を示すディレクトリ
 define default_user_dir = "default_game_data"

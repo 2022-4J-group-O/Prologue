@@ -46,4 +46,7 @@ label pr_ev_door_opened_clicked:
 
         g "探してきて"
 
+    hide girl
+    with dissolve
+
     return
