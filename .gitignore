@@ -1,10 +1,7 @@
 /game/saves
 /game/tl
 /game/cache
-/log.txt
 /.vscode
 *.DS_Store
 *.rpyc
-/errors.txt
-/traceback.txt
-/game/images/protected
+/*.txt

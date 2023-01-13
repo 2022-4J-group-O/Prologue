@@ -20,6 +20,16 @@ init python:
             num |= ((i << shift) | (i >> (8 - shift))) & 0x00FF
         return num.to_bytes(256, byteorder="big")
     
+    # デコード失敗時Noneを返す
+    def dumpfile(path):
+        s = str()
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                s = f.read()
+        except UnicodeDecodeError:
+            return None
+        return s
+
     # pathで指定されるファイルの中身を返す
     def dumpbfile(path):
         s = bytes()
@@ -29,8 +39,7 @@ init python:
     
     # デフォルトのユーザー用ディレクトリ構造をバイナリデータで暗号化してpathで指定されるファイルに保存
     def update_user_dir(path=default_user_dir_abs):
-        direc = Directory()
-        direc.load(path)
+        direc = Directory.read(path)
         by = direc.__repr__().encode("utf-8").translate(global_data.crypttable)
         with open(default_user_dirdata_path_abs, "wb") as f:
             f.write(by)
@@ -39,7 +48,7 @@ init python:
     # 戻り値はDirectoryクラス
     def load_user_dirdata():
         by = dumpbfile(default_user_dirdata_path_abs).translate(global_data.decrypttable)
-        return Directory(eval(by.decode("utf-8")))
+        return eval(by.decode("utf-8"))
     
     # 部屋をリセット(相対パスで)
     # PE -> PermissionError
@@ -64,3 +73,15 @@ init python:
                     f.write(global_data.default_dir_data.dirlist[2][i])
         os.chdir(cwd)
         return None
+    
+    def init_room(room_path):
+        cwd = os.getcwd()
+        check_folder_new(config.basedir, user_directory)
+        os.chdir(user_dir_path)
+        pathparts = os.path.split(room_path)
+        if os.path.isdir(room_path):
+            shutil.rmtree(room_path)
+        elif os.path.isfile(room_path):
+            os.remove(room_path)
+        global_data.default_dir_data.make(room_path, room_path)
+        os.chdir(cwd)

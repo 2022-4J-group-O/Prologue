@@ -20,7 +20,7 @@ label main_menu:
     return
 
 label start:
-    jump pr_start
+    jump pr
     
     return
 

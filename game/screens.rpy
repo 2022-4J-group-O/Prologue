@@ -118,7 +118,6 @@ screen say(who, what):
     if not renpy.variant("small"):
         add SideImage() xalign 0.0 yalign 1.0
 
-
 ## namebox を Character オブジェクトから使えるスタイルの接頭辞として追加します。
 ## （例：namebox_background)
 init python:
@@ -252,20 +251,20 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
-            #textbutton _("ロールバック") action Rollback()
+            textbutton _("ロールバック") action Rollback()
             textbutton _("ヒストリー") action ShowMenu('history')
             textbutton _("スキップ") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("オート") action Preference("auto-forward", "toggle")
-            #textbutton _("セーブ") action ShowMenu('save')
-            #textbutton _("Q.セーブ") action QuickSave()
-            #textbutton _("Q.ロード") action QuickLoad()
+            textbutton _("セーブ") action ShowMenu('save')
+            textbutton _("Q.セーブ") action QuickSave()
+            textbutton _("Q.ロード") action QuickLoad()
             textbutton _("設定") action ShowMenu('preferences')
 
 
 ## 次のコードは、プレイヤーが明示的にインターフェースを隠さない限り quick_menu
 ## スクリーンが常にゲーム中に表示されるようにしています。
-init python:
-    config.overlay_screens.append("quick_menu")
+# init python:
+#     config.overlay_screens.append("quick_menu")
 
 default quick_menu = True
 
@@ -306,19 +305,19 @@ screen navigation():
 
             textbutton _("ヒストリー") action ShowMenu("history")
 
-            #textbutton _("セーブ") action ShowMenu("save")
+            # textbutton _("セーブ") action ShowMenu("save")
 
-        #textbutton _("ロード") action ShowMenu("load")
+        # textbutton _("ロード") action ShowMenu("load")
 
-        textbutton _("環境設定") action ShowMenu("save")
+        textbutton _("設定") action ShowMenu("preferences")
 
         if _in_replay:
 
             textbutton _("リプレイ終了") action EndReplay(confirm=True)
 
-        #elif not main_menu:
+        # elif not main_menu:
 
-            #textbutton _("メインメニュー") action MainMenu()
+        #     textbutton _("メインメニュー") action MainMenu()
 
         textbutton _("バージョン情報") action ShowMenu("about")
 
@@ -587,12 +586,11 @@ style about_label_text:
 ## https://ja.renpy.org/doc/html/screen_special.html#save https://ja.renpy.org/
 ## doc/html/screen_special.html#load
 
-## セーブできないようにした(要検証)
 # screen save():
 
 #     tag menu
 
-#     use file_slots(_("ナビゲーション")) #セーブを無理やり修正
+#     use file_slots(_("セーブ"))
 
 
 screen load():
@@ -718,13 +716,14 @@ style slot_button_text:
 ##
 ## https://ja.renpy.org/doc/html/screen_special.html#preferences
 
-## 右クリックしてメニューを呼び出すとsaveスクリーンが呼ばれる
-## バグが起こりそうなので要検証
 screen save():
+    use preferences
+
+screen preferences():
 
     tag menu
 
-    use game_menu(_("環境設定"), scroll="viewport"):
+    use game_menu(_("設定"), scroll="viewport"):
 
         vbox:
 
@@ -907,6 +906,7 @@ screen history():
                     label h.who:
                         style "history_name"
                         substitute False
+                        text_font gui.name_text_font
 
                         ## キャラクター名のカラーが設定されている場合、その情報
                         ## を獲得して色付けします。
@@ -916,9 +916,10 @@ screen history():
                 $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
                 text what:
                     substitute False
+                    font gui.text_font
 
-        if not _history_list:
-            label _("ヒストリーはありません。")
+        # if not _history_list:
+        #     label _("ヒストリーはありません。")
 
 
 ## This determines what tags are allowed to be displayed on the history screen.
@@ -1009,9 +1010,9 @@ screen keyboard_help():
         label _("Space")
         text _("台詞を読み進める。ただしボタンは選択しない。")
 
-    hbox:
-        label _("方向キー")
-        text _("インターフェースを移動する。")
+    # hbox:
+    #     label _("方向キー")
+    #     text _("インターフェースを移動する。")
 
     hbox:
         label _("Escape")
@@ -1025,13 +1026,13 @@ screen keyboard_help():
         label _("Tab")
         text _("スキップモードに切り替える。")
 
-    hbox:
-        label _("Page Up")
-        text _("前の台詞に戻る。")
+    # hbox:
+    #     label _("Page Up")
+    #     text _("前の台詞に戻る。")
 
-    hbox:
-        label _("Page Down")
-        text _("ロールバック中、次の台詞に進む。")
+    # hbox:
+    #     label _("Page Down")
+    #     text _("ロールバック中、次の台詞に進む。")
 
     hbox:
         label "H"
@@ -1064,13 +1065,13 @@ screen mouse_help():
         label _("右クリック")
         text _("ゲームメニューを開く。")
 
-    hbox:
-        label _("マウスホイール上回転\n画面サイドをタッチ")
-        text _("前の台詞に戻る。")
+    # hbox:
+    #     label _("マウスホイール上回転\n画面サイドをタッチ")
+    #     text _("前の台詞に戻る。")
 
-    hbox:
-        label _("マウスホイール下回転")
-        text _("ロールバック中、次の台詞に進む。")
+    # hbox:
+    #     label _("マウスホイール下回転")
+    #     text _("ロールバック中、次の台詞に進む。")
 
 
 screen gamepad_help():

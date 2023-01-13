@@ -2,32 +2,36 @@
 本をクリックしたときのイベント
 """
 
-label pr_ev_book_clicked:
+label pr_book_clicked:
 
-    if not pr_book_opened:
-        
-        g "この本、違和感があるね"
-        
-        $ pr_book_opened = True # 既読フラグ
-        $ delete_obj("Book")
-        $ make_obj("Book Opened")
-        $ make_obj('Key') # 鍵オブジェクトを生成
+    show girl at right with dissolve
+    g "この本、違和感があるね"
+    
+    $ delete_obj("Book")
+    $ make_obj("Book Opened")
+    $ make_obj('Key') # 鍵オブジェクトを生成
 
-        show girl surprise at right
+    show girl surprise at right with dissolve
 
-        show screen pr_screen(read_room()) # 鍵を表示させるためにスクリーン更新する
+    show screen pr_screen(read_room()) # 鍵を表示させるためにスクリーン更新する
 
-        g "わ、中に鍵がはいってた"
+    g "わ、中に鍵がはいってた"
 
-        show girl at right
+    show girl at right with dissolve
 
-        g "この鍵、使えそうだね"
+    g "この鍵、使えそうだね"
 
-    else:
+    hide girl with dissolve
 
-        g "この本、偽物だったんだね"
+    $ event_end(loop_label())
 
-    hide girl
 
-    return
+label pr_book_opened_clicked:
 
+    show girl at right with dissolve
+
+    g "この本、偽物だったんだね"
+
+    hide girl with dissolve
+
+    $ event_end(loop_label())
