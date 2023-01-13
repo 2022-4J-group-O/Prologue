@@ -268,4 +268,6 @@ init python:
     build.classify("**.ps1", None) # powershellスクリプトを除外
     build.classify("readme.md", None) # github用のreadmeを除外
     build.classify(default_user_dir + "/**", None) # default_game_data以下をすべて除外
+    build.classify("python/**", None) # pythonスクリプトを除外
     build.classify("game/images/**", "archive") # 画像を暗号化
+    build.classify("game/fonts/**", "archive") # フォントを暗号化
