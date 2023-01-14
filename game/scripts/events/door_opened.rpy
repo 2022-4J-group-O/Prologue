@@ -1,5 +1,5 @@
-label pr_ev_door_opened:
-    show girl at right
+label pr_door_opened:
+    show girl at right with dissolve
 
     $ delete_obj("Door")
     $ make_obj("Door Opened")
@@ -10,6 +10,6 @@ label pr_ev_door_opened:
 
     g "君には少し簡単すぎたかな？"
 
-    hide girl
+    hide girl with dissolve
 
-    return
+    $ event_end(loop_label())

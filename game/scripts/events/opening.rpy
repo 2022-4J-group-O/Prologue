@@ -2,7 +2,7 @@
 prologue初回起動時にのみ発生させるイベント
 少女とプレイヤーが出会うシーン
 
-イベント終了後、pr_startラベルへ戻る
+イベント終了後、prラベルへ戻る
 
 # ラベル
 * pr_opening
@@ -26,33 +26,33 @@ label pr_ev_opening:
 
     g "君は......どうやら私の知り合いではないみたい"
 
-    show girl smile at right
+    show girl smile at right with dissolve
 
     g "君が誰なのかはよくわからないけど、人と話せてうれしい"
 
     "......"
 
-    show girl look away at right
+    show girl look away at right with dissolve
 
     g "......ところでさ、どうして君がこのプログラムを起動したのか私にはわからないんだけど......"
 
-    show girl at right
-    
+    show girl at right with dissolve 
+
     g "ゲームを遊びに来た......ってことでいいんだよね？"
 
     "......"
 
-    show girl smile at right
+    show girl smile at right with dissolve
 
     g "なんにせよ、私との遊びに付き合ってほしいんだけど、どうかな？"
 
-    show girl look away at right
+    show girl look away at right with dissolve
 
     g "とにかく暇なんだよ......私ここにずっと一人だからさ......"
 
     "......"
 
-    show girl at right
+    show girl at right with dissolve
 
     g "このゲームは、脱出ゲームだよ"
 
@@ -64,11 +64,11 @@ label pr_ev_opening:
 
     g "きっと、こんな時間からこんなゲーム起動した君の、暇つぶしくらいにはなるよ"
 
-    show girl smile at right
+    show girl smile at right with dissolve
 
     g "とにかく、私の暇を紛らわせてほしい"
 
-    show girl
+    show girl with dissolve
     
     g "きっと、きみを退屈させないって約束するからさ、どう？"
 
@@ -84,7 +84,7 @@ label .question:  # 遊びに付き合うか尋ねる
 
 # 遊びに付き合うと答えた場合
 label .yes:
-    show girl at right
+    show girl at right with dissolve
     
     g "ありがとう！"
 
@@ -94,9 +94,9 @@ label .yes:
 
     g "この部屋の探索から始めてみたら？"
 
-    hide girl
+    hide girl with dissolve
 
-    return  # イベント終了
+    $ event_end(loop_label())  # イベント終了
 
 
 # 遊びに付き合うことを断った場合
@@ -105,11 +105,11 @@ label .no:
 
         $ jumped_pr_no = True
 
-        show girl
+        show girl with dissolve
 
         "......"
         
-        show girl smile
+        show girl smile with dissolve
 
         g "だよねー、まずは断って、キャラのリアクション見てみないといけないよね"
 
@@ -126,16 +126,16 @@ label .no:
         g "ゲームに付き合ってくれるよね？"
     
     else:  # 訪問二回目以降
-        show girl at right
+        show girl at right with dissolve
 
         "......"
 
-        show girl smile at right
+        show girl smile at right with dissolve
 
         g "なかなか慎重派なプレイヤーさんだね"
 
         g "これ以上違うイベントは起こさないよ。安心して"
 
-        hide girl
+        hide girl with dissolve
 
     jump .question  # もう一度質問する

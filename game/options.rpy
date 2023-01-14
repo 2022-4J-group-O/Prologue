@@ -229,18 +229,20 @@ define default_user_dirdata_path = "game/data/default"
 # mainを起動していないときに存在するファイル
 define main_built_flg_path = "game/data/main_nbuilt"
 
-# 読み込むファイルのlist
-define objects = ['Book', "Book Opened", 'Door', 'Key', 'Clock', 'Cushion', "Door Opened"]
 
 define default_obj_prop = {
-    "Book": {"pos": (0.5, 0.8), "yoffset": 60, "draggable": False, "clicked": FromSc("pr_ev_book_clicked", "pr_start.scloop")},
-    "Book Opened": {"pos": (0.4, 0.7), "yoffset": 10, "draggable": False, "clicked": FromSc("pr_ev_book_clicked", "pr_start.scloop")},
-    "Door": {"pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 30, "draggable": False, "droppable": True, "clicked": FromSc("say_simple", "pr_start.scloop", msg="鍵がかかってるみたい")},
-    "Cushion": {"anchor": (0.5, 0.5), "pos": (0.7, 0.8), "draggable": False},
-    "Clock": {"pos": (0.65, 0.0), "yoffset": 30, "draggable": False, "clicked": FromSc("pr_ev_clock_clicked", "pr_start.scloop")},
-    "Key": {"pos": (0.5, 0.8), "offset": (55, 50), "clicked": FromSc("say_simple", "pr_start.scloop", msg="古い鍵だね")},
-    "Door Opened": {"pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 15, "draggable": False, "clicked": FromSc("pr_ev_door_opened_clicked", "pr_start.scloop")}
+
+    "Book":             {"pos": (0.5, 0.8), "yoffset": 60, "draggable": False},
+    "Book Opened":      {"pos": (0.4, 0.7), "yoffset": 10, "draggable": False},
+    "Door":             {"pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 30, "draggable": False, "droppable": True, "dropped": pr_dropped_to_door},
+    "Cushion":          {"anchor": (0.5, 0.5), "pos": (0.7, 0.8), "draggable": False},
+    "Clock":            {"pos": (0.65, 0.0), "yoffset": 30, "draggable": False},
+    "Key":              {"pos": (0.5, 0.8), "offset": (55, 50), "draggable": True},
+    "Door Opened":      {"pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 15, "draggable": False}
 }
+
+# 読み込むファイルのlist
+define objects = default_obj_prop.keys()
 
 # ロールバックの無効化
 define config.rollback_enabled = False
@@ -259,11 +261,13 @@ define default_user_dir = "default_game_data"
 default current_room = 'default'
 
 # 会話中フラグ
-default say_interact = False
+default enable_event = True
 
 # ここからビルド設定
 init python:
     build.classify("**.ps1", None) # powershellスクリプトを除外
     build.classify("readme.md", None) # github用のreadmeを除外
     build.classify(default_user_dir + "/**", None) # default_game_data以下をすべて除外
+    build.classify("python/**", None) # pythonスクリプトを除外
     build.classify("game/images/**", "archive") # 画像を暗号化
+    build.classify("game/fonts/**", "archive") # フォントを暗号化
