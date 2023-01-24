@@ -229,16 +229,17 @@ define default_user_dirdata_path = "game/data/default"
 # mainを起動していないときに存在するファイル
 define main_built_flg_path = "game/data/main_nbuilt"
 
-
+# indexは画面表示の優先順位を表す。indexが小さいオブジェクトから順に描画される。
+# index=0 => 壁と同じ階層, index=1 => 壁に接している家具,
+# index=2 => 壁の手前の家具, index=3 => Config等のボタン
 define default_obj_prop = {
-
-    "Book":             {"pos": (0.5, 0.8), "yoffset": 60, "draggable": False},
-    "Book Opened":      {"pos": (0.4, 0.7), "yoffset": 10, "draggable": False},
-    "Door":             {"pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 30, "draggable": False, "droppable": True, "dropped": pr_dropped_to_door},
-    "Cushion":          {"anchor": (0.5, 0.5), "pos": (0.7, 0.8), "draggable": False},
-    "Clock":            {"pos": (0.65, 0.0), "yoffset": 30, "draggable": False},
-    "Key":              {"pos": (0.5, 0.8), "offset": (55, 50), "draggable": True},
-    "Door Opened":      {"pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 15, "draggable": False}
+    "Book":             {"index": 2, "pos": (0.5, 0.8), "yoffset": 60, "draggable": False},
+    "Book Opened":      {"index": 2, "pos": (0.4, 0.7), "yoffset": 10, "draggable": False},
+    "Door":             {"index": 0, "pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 30, "draggable": False, "droppable": True, "dropped": pr_dropped_to_door},
+    "Cushion":          {"index": 2, "anchor": (0.5, 0.5), "pos": (0.7, 0.8), "draggable": False},
+    "Clock":            {"index": 1, "pos": (0.65, 0.0), "yoffset": 30, "draggable": False},
+    "Key":              {"index": 2, "pos": (0.5, 0.8), "offset": (55, 50), "draggable": True},
+    "Door Opened":      {"index": 0, "pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 15, "draggable": False}
 }
 
 # 読み込むファイルのlist
