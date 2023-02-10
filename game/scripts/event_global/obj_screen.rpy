@@ -7,12 +7,21 @@ screen obj_screen(current, obj_prop={}):
     draggroup:
         for i, item in enumerate(prop.keys()):
             $ imagetag = item.lower().replace(".", "_")
+            $ imgtagidle = imagetag + "_idle"
+            $ imgtaghover = imagetag + "_hover"
             drag:
                 drag_name item
                 if renpy.can_show(imagetag):
                     add imagetag
                 else:
-                    add SampleImage(item, 150, 150, img_col[i % 6])
+                    if renpy.can_show(imgtagidle):
+                        idle_child imgtagidle
+                    else:
+                        idle_child SampleImage(item, 150, 150, img_col[i % 6])
+                    if renpy.can_show(imgtaghover):
+                        hover_child imgtaghover
+                    else:
+                        hover_child SampleImage(item, 150, 150, img_col[i % 6])
                 draggable False
                 droppable False
                 if enable_event:

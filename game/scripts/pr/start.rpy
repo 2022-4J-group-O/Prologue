@@ -10,18 +10,26 @@ default pr_main_activated = False  # Mainのプログラムが起動されたと
 
 default key_dropped = False # KeyがドロップされるとTrue
 
-label pr:
+label pr_start:
+    if pr_evflg_opening:
+        $ init_room("simple room")
     $ move_room("simple room")  # 部屋移動
-    $ init_room("simple room")
     scene bg room
     show screen pr_screen(read_room())
-    with Fade(0.0, 1.0, 2.0)
+    with Fade(2.0, 1.0, 2.0)
+    jump pr.scloop
 
+label pr:
+    if pr_evflg_opening:
+        $ init_room("simple room")
+    $ move_room("simple room")  # 部屋移動
+    scene bg room
 
 # スクリーンを表示する無限ループ
 label .scloop:
     window hide
     show screen pr_screen(read_room())  # スクリーン表示
+    with dissolve
 
     if pr_evflg_opening:  # 初回起動時 
         python:
