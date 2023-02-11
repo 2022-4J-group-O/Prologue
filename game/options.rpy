@@ -239,7 +239,8 @@ define default_obj_prop = {
     "Cushion":          {"index": 2, "anchor": (0.5, 0.5), "pos": (0.7, 0.8), "draggable": False},
     "Clock":            {"index": 1, "pos": (0.65, 0.0), "yoffset": 30, "draggable": False},
     "Key":              {"index": 2, "pos": (0.5, 0.8), "offset": (55, 50), "draggable": True},
-    "Door Opened":      {"index": 0, "pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 15, "draggable": False}
+    "Door Opened":      {"index": 0, "pos": (0.1, 0.5), "yanchor": 0.5, "yoffset": 15, "draggable": False},
+    "Start":            {"index": 3, "pos": (0.5, 0.6), "anchor": (0.5, 0.5)},
 }
 
 # 読み込むファイルのlist
