@@ -5,7 +5,7 @@ label pr_clock_clicked:
 
     show girl at right with dissolve
 
-    $ now = datetime.datetime.now().strftime("%H時%M分")
+    $ now = datetime.datetime.now().strftime("%H時%M分%S秒")
     
     g "時計があるね"
     
@@ -13,11 +13,11 @@ label pr_clock_clicked:
 
     g "[now]だって"
 
-    g "まあ、時間を取得する関数を呼び出しただけで、あの時計はただの絵に過ぎないんだけど......"
+    g "まあ、この端末に設定されている時間を読んだだけで、あの時計はただの絵に過ぎないんだけど......"
 
     show girl smile at right with dissolve
 
-    g "こうすると、まるで、私が本当に時計を読み取ったみたいでしょう？"
+    g "こうすると、私が時計を読み取ったかのように見えるでしょう？"
     
     hide girl
     
