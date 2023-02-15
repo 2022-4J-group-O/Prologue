@@ -1,4 +1,6 @@
 label pr_door_opened:
+    if check_main():
+        $ event_end(loop_label())
 
     show girl at right with dissolve
 
