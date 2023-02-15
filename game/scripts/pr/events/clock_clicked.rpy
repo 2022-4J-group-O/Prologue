@@ -2,7 +2,8 @@ init python:
     import datetime
 
 label pr_clock_clicked:
-
+    if check_main():
+        $ event_end()
     show girl at right with dissolve
 
     $ now = datetime.datetime.now().strftime("%H時%M分%S秒")

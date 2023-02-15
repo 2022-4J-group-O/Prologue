@@ -1,4 +1,5 @@
 label pr_door_opened:
+
     show girl at right with dissolve
 
     $ delete_obj("Door")

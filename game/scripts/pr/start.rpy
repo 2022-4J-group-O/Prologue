@@ -10,6 +10,8 @@ default pr_main_activated = False  # Mainのプログラムが起動されたと
 
 default key_dropped = False # KeyがドロップされるとTrue
 
+default jumped_pr_door_clicked = False  # 閉じたドアが一回以上クリックされたかどうか
+
 label pr_start:
     if pr_evflg_opening:
         $ init_room("simple room")
@@ -40,7 +42,7 @@ label .scloop:
         pass  # 何か書くかも？
 
     # KeyがDoorにドロップされたときのイベント
-    if key_dropped:
+    if key_dropped and not check_main():
         python:
             key_dropped = False
             if not pr_door_opened:

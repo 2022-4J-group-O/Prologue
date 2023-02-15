@@ -3,6 +3,8 @@
 """
 
 label pr_door_opened_clicked:
+    if check_main():
+        $ event_end()
     # 初めてこのラベルにジャンプしたとき
     if not jumped_pr_door_opened_clicked:
 
@@ -42,9 +44,23 @@ label pr_door_opened_clicked:
 
         show girl at right with dissolve
 
-        g "別のプログラムを起動すれば、このドアが通れるようになるはずだよ"
+        g "このドアの先は、別のプログラムにつながってると思う"
 
-        g "探してきて"
+        g "それを起動すれば、この先へ行けるはずだよ"
+
+        g "ちなみに、いま私たちがいるこの場所は......"
+
+        $ path = os.path.join(config.basedir, current_room)
+
+        g "\"[path]\"だよ"
+
+        g "君がこのゲームを最初に起動したときに実行したファイルも、この近くにあるよね"
+
+        g "これとは別にもう一つ実行ファイルがあるはず"
+
+        show girl smile at right with dissolve
+
+        g "それを探してきて"
 
     hide girl
     with dissolve
