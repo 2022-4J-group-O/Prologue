@@ -38,6 +38,6 @@ label pr_cushion_clicked:
     if check_main():
         $ event_end()
 
-    call say_simple("なんの変哲もないクッションだね") from _call_say_simple
+    call say_simple("なんの変哲もないクッションだね")
 
     $ event_end(loop_label())
