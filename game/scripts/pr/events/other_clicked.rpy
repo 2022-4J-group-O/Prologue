@@ -31,3 +31,9 @@ label pr_door_clicked:
     hide girl with dissolve
 
     $ event_end(loop_label())
+
+label pr_cushion_clicked:
+
+    call say_simple("なんの変哲もないクッションだね")
+
+    $ event_end(loop_label())
