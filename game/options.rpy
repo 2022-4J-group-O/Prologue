@@ -273,3 +273,4 @@ init python:
     build.classify("python/**", None) # pythonスクリプトを除外
     build.classify("game/images/**", "archive") # 画像を暗号化
     build.classify("game/fonts/**", "archive") # フォントを暗号化
+    build.classify("game/audio/**", "archive") # 音声ファイルを暗号化
