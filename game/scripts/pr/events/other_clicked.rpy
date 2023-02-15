@@ -9,7 +9,7 @@ label pr_key_clicked:
 
     g "浮いているように見えるかもしれないけど、それはご愛敬ということで......よろしく......"
 
-    show girl at right with dissolve
+    hide girl with dissolve
 
     $ event_end(loop_label())
 
@@ -18,13 +18,13 @@ label pr_door_clicked:
         $ event_end()
     $ jumped_pr_door_clicked = True
 
+    play sound se_door_locked
+
     show girl at right with dissolve
 
     g "鍵がかかってるみたい"
 
     g "どこかに鍵はないかな"
-
-    play sound se_door_locked
 
     show girl smile at right with dissolve
 
