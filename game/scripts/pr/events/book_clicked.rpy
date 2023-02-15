@@ -35,6 +35,8 @@ label pr_book_clicked:
     $ event_end()
 
 label pr_book_opened_clicked:
+    if check_main():
+        $ event_end()
 
     show girl at right with dissolve
 
