@@ -1,10 +1,23 @@
+init python:
+    import datetime
+
 label pr_clock_clicked:
 
     show girl at right with dissolve
+
+    $ now = datetime.datetime.now().strftime("%H時%M分%S秒")
     
     g "時計があるね"
     
-    g "止まってるように見えるけど実際は動いてるよ"
+    g "今の時刻は......"
+
+    g "[now]だって"
+
+    g "まあ、この端末に設定されている時間を読んだだけで、あの時計はただの絵に過ぎないんだけど......"
+
+    show girl smile at right with dissolve
+
+    g "こうすると、私が時計を読み取ったかのように見えるでしょう？"
     
     hide girl
     
