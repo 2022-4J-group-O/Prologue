@@ -42,7 +42,7 @@ label .scloop:
         pass  # 何か書くかも？
 
     # KeyがDoorにドロップされたときのイベント
-    if key_dropped:
+    if key_dropped and not check_main():
         python:
             key_dropped = False
             if not pr_door_opened:

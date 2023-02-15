@@ -1,4 +1,6 @@
 label pr_key_clicked:
+    if check_main():
+        $ event_end()
     show girl at right with dissolve
 
     g "古い鍵だね"
@@ -12,7 +14,8 @@ label pr_key_clicked:
     $ event_end(loop_label())
 
 label pr_door_clicked:
-
+    if check_main():
+        $ event_end()
     $ jumped_pr_door_clicked = True
 
     show girl at right with dissolve

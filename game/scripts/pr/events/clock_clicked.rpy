@@ -1,5 +1,6 @@
 label pr_clock_clicked:
-
+    if check_main():
+        $ event_end()
     show girl at right with dissolve
     
     g "時計があるね"

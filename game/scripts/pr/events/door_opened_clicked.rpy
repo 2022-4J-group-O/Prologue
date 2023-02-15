@@ -3,6 +3,8 @@
 """
 
 label pr_door_opened_clicked:
+    if check_main():
+        $ event_end()
     # 初めてこのラベルにジャンプしたとき
     if not jumped_pr_door_opened_clicked:
 

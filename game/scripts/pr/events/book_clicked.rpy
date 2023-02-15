@@ -3,6 +3,8 @@
 """
 
 label pr_book_clicked:
+    if check_main():
+        $ event_end()
     show girl at right with dissolve
 
     if jumped_pr_door_clicked:
