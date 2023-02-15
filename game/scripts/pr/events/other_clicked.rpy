@@ -35,6 +35,8 @@ label pr_door_clicked:
     $ event_end(loop_label())
 
 label pr_cushion_clicked:
+    if check_main():
+        $ event_end()
 
     call say_simple("なんの変哲もないクッションだね")
 
